@@ -1,6 +1,6 @@
 uebung9:
-  image: tomcat:8.0
+  image: tomcat:latest
   ports:
     - "127.0.0.100:80:8080"
   volumes:
-     - ./ServletTest.war:/usr/local/tomcat/webapps/ServletTest.war
+     - ./ue10.war:/usr/local/tomcat/webapps/ue10.war
