@@ -1,0 +1,26 @@
+<div id="page">
+
+
+    <!-- Partial -->
+    <h4>Partial1Column (Template)</h4>
+    <f:render partial="PageHeader" />
+
+
+    <!-- content via Typoscript -->
+    <div id="page-body">
+        <div id="page-title">{data.title} - 1 Spalte</div>
+
+        <div id="whole-content">
+
+            <!-- 1 Spalte -->
+            <f:format.raw>{contentNormal}</f:format.raw>
+
+        </div>
+        <div id="page-body-end">&nbsp;</div>
+    </div>
+
+
+    <!-- Partial -->
+    <f:render partial="PageFooter" />
+
+</div>

@@ -1,0 +1,45 @@
+version: "3"
+services:
+# container der daten enthält  
+  typo3-data:
+#   namen besser automatisch vergeben lassen - ohne angabe (<projektname|servicename>)
+#   container_name: typo3_data_v3
+    build: ./typo3
+    volumes:
+      - fileadmin:/var/www/html/fileadmin
+      - typo3conf:/var/www/html/typo3conf
+      - typo3temp:/var/www/html/typo3temp
+      - uploads:/var/www/html/uploads
+    networks:
+      - backend
+  typo3:
+#   container_name: typo3_v3
+    build: ./typo3
+#   lokalerhost<port:ip>:remotedocker<port>    
+    ports:
+      -"80:80"
+#   teil des netzwerkes backend      
+    networks:
+      - backend
+  database:
+#   container_name: mysql_v3
+    image: mysql:latest
+    command:
+      - --character-set-server=utf8
+      - --collation-server=utf8_unicode_ci
+    environment:
+      - "MYSQL_USER=${MYSQL_USER:-typo3}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE:-typo3}"
+      - "MYSQL_RANDOM_ROOT_PASSWORD=yes"
+    networks:
+      - backend
+volumes:
+  database:
+  fileadmin:
+  typo3conf:
+  typo3temp:
+  uploads:
+# gemeinsames netzwerk mit namen backend
+networks:
+  backend:

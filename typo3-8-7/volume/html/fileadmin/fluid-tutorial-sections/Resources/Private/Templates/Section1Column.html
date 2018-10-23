@@ -1,0 +1,31 @@
+
+<div id="page">
+    <f:render section="PageHeader" />
+    <div id="page-body">
+        <div id="page-title">{data.title}</div>
+        <div id="whole-content">
+            <f:format.raw>{contentNormal}</f:format.raw>
+        </div>
+        <div id="page-body-end">&nbsp;</div>
+    </div>
+    <f:render section="PageHeader" /><!-- insert section header -->
+    <f:render section="PageFooter" /><!-- insert section footer -->
+</div>
+
+
+<!-- Bausteine -->
+
+<!-- Sektion header -->
+<f:section name="PageHeader">
+    <div id="page-header">
+        <div id="navigation-top-level"><f:cObject typoscriptObjectPath="lib.topNavigation" /></div>
+        <div id="navigation-trail">{f:cObject(typoscriptObjectPath:'lib.breadcrumbTrail')->f:format.raw()}</div>
+    </div>
+</f:section>
+
+<!-- Sektion footer -->
+<f:section name="PageFooter">
+    <div id="page-footer">
+        <div id="footer-notice"> <p>This is the page footer area.</p> </div>
+    </div>
+</f:section>

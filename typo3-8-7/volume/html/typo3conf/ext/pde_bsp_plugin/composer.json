@@ -1,0 +1,28 @@
+{
+    "name": "panadeedu/pde-bsp-plugin",
+    "type": "typo3-cms-extension",
+    "description": "Rendert Beispiel Content ins Frontend",
+    "authors": [
+        {
+            "name": "Christoph Beer",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "PanadeEdu\\PdeBspPlugin\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PanadeEdu\\PdeBspPlugin\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "pde_bsp_plugin": "self.version",
+        "typo3-ter/pde-bsp-plugin": "self.version"
+    }
+}

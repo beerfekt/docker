@@ -1,0 +1,29 @@
+<div id="page">
+
+    <!-- Partials/Header -->
+    <h4>Partial2COlumnPage (Layout)</h4>
+    <f:render partial="PageHeader" />
+
+
+    <!-- content via Typoscript -->
+    <div id="page-body">
+        <div id="page-title">{data.title} - 2 Spalten</div>
+
+        <!-- Spalte 1 -->
+        <div id="main-content">
+            <f:format.htmlentitiesDecode>{contentNormal}</f:format.htmlentitiesDecode>
+        </div>
+
+        <!-- Spalte2 -->
+        <div id="side-content">
+            <f:format.htmlentitiesDecode>{contentRight}</f:format.htmlentitiesDecode>
+        </div>
+        <div id="page-body-end">&nbsp;</div>
+    </div>
+
+
+    <!-- Partials/PageFooter -->
+    <f:render partial="PageFooter" />
+
+
+</div>

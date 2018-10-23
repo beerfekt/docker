@@ -1,0 +1,37 @@
+version: "3"
+services:
+  typo3:
+#   container_name: typo3_v3
+    build: ./typo3
+    volumes:
+      - ./html/fileadmin:/var/www/html/fileadmin
+      - ./html/typo3conf:/var/www/html/typo3conf
+      - ./html/typo3temp:/var/www/html/typo3temp
+      - ./html/uploads:/var/www/html/uploads    
+#   lokalerhost<port:ip>:remotedocker<port>    
+    ports:
+      - "127.0.1.3:80:80"
+#   teil des netzwerkes backend      
+    networks:
+      - backend
+#   wichtig da sonst die container ips vertauscht werden nach stop/start
+    depends_on:
+      - database
+  database:
+#   container_name: mysql_v3
+    image: mysql:latest
+    command:
+      - --character-set-server=utf8
+      - --collation-server=utf8_unicode_ci
+    environment:
+      - "MYSQL_USER=${MYSQL_USER:-typo3}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE:-typo3}"
+      - "MYSQL_RANDOM_ROOT_PASSWORD=yes"
+    ports:
+      - "127.0.1.2:3306:3306"
+    networks:
+      - backend
+# gemeinsames netzwerk mit namen backend
+networks:
+  backend:

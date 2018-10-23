@@ -1,0 +1,31 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <!-- lädt das layout in default.html -->
+	<f:layout name="Default" />
+	<!-- lädt die section "content" in default.html -->
+
+	<f:section name="content">
+		<hr>
+		<h3>Extension "Panade Edu" </h3><p> - Listing for Example - TEST BLA</p>
+
+		<f:flashMessages />
+
+		<table  class="tx_pdebspplugin" >
+			<tr>
+				<th> </th>
+				<th> </th>
+			</tr>
+
+			<f:for each="{examples}" as="example">
+				<tr>
+					<td><f:link.action action="edit" arguments="{example : example}">Edit</f:link.action></td>
+					<td><f:link.action action="delete" arguments="{example : example}">Delete</f:link.action></td>
+				</tr>
+			</f:for>
+		</table>
+
+		<f:link.action action="new">New Example</f:link.action>
+		<hr>
+	</f:section>
+
+</html>
